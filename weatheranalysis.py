@@ -141,7 +141,18 @@ for key, value in sessions.items():
     filter = (weather['Month'].isin(value))
     main(data=weather[filter])
     
-
+OJ = [x for x in range(1,10)]
+Aj = [x for x in range(1,8)]
+SJ = [x for x in range(1,9)]
+time_spans = {
+    'October to January' : OJ,
+    'August to January' : Aj,
+    'September to January' : SJ
+}
+for key, value in time_spans.items():
+    st.title(f'Data By {key}')
+    filter = (weather['Month'].isin(value))
+    main(data=weather[filter])
 
 
 
