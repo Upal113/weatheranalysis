@@ -8,9 +8,6 @@ pandocfilters==1.4.3
 parse==1.19.0
 parso==0.7.1
 pathlib==1.0.1
-pdfminer==20191125
-pdfminer.six==20201018
-pdftopng==0.2.3
 pefile==2019.4.18
 pickleshare==0.7.5
 Pillow==8.0.1
