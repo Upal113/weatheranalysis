@@ -26,8 +26,11 @@ def get_table_download_link(dataframe):
 st.title('Australian Weather Analysis.')
 st.subheader('Please enter the desired csv file')
 upload_file = st.file_uploader(label='Please enter the desired csv file')
-weather = pd.read_csv(upload_file)
-
+if upload_file:
+    weather = pd.read_csv(upload_file)
+else:
+    weather = pd.read_csv('weather.csv')
+    
 year_select = st.slider(label='Select Year Range', 
     min_value=min(weather['Year'].tolist()),
     max_value=max(weather['Year'].tolist()),
