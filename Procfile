@@ -1,1 +1,1 @@
-web: sh setup.sh && streamlit run SuperstoreDataset.py
+web: sh setup.sh && streamlit run weatheranalysis.py
