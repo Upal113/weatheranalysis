@@ -13,16 +13,6 @@ st.set_page_config(
 
 
 
-def get_table_download_link(dataframe):
-            """Generates a link allowing the data in a given panda dataframe to be downloaded
-            in:  dataframe
-            out: href string
-            """
-            csv = dataframe.to_csv()
-            b64 = base64.b64encode(csv.encode()).decode('utf-8')  # some strings <-> bytes conversions necessary here
-            href = f'<a href="data:file/csv;base64,{b64}" download="output.csv">Download csv file output</a>'
-            return href
-
 st.title('Australian Weather Analysis.')
 st.subheader('Please enter the desired csv file')
 
@@ -43,7 +33,7 @@ filter = (weather['Year'].between(*year_select)) & (weather['Bureau of Meteorolo
 weather = weather[filter]
 st.write(weather)
 
-st.markdown(get_table_download_link(dataframe=weather), unsafe_allow_html=True)
+
 def main(data):
     monthly_rainfall = px.bar(
         data_frame=data,
@@ -82,7 +72,6 @@ def main(data):
     )
     st.title('Total rain by year')
     st.write(rain_by_year)
-    st.markdown(get_table_download_link(dataframe=rain_by_year), unsafe_allow_html=True)
     st.plotly_chart(rain_by_year_bar)
 
 
@@ -97,7 +86,6 @@ def main(data):
     )
     st.title('Average rain per year')
     st.write(rain_by_year_avg)
-    st.markdown(get_table_download_link(dataframe=rain_by_year_avg), unsafe_allow_html=True)
     st.plotly_chart(rain_by_year_avg_line)
 
 
@@ -114,7 +102,6 @@ def main(data):
     rain_by_year_month_avg_bar.update_layout(transition = {'duration': 5000})
     st.title('Average rain per month on yearly basis')
     st.write(rain_by_year_month_avg)
-    st.markdown(get_table_download_link(dataframe=rain_by_year_month_avg), unsafe_allow_html=True)
     st.plotly_chart(rain_by_year_month_avg_bar)
 
 
